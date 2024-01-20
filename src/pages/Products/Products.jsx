@@ -6,15 +6,14 @@ import useFetch from "../../hooks/useFetch";
 import "./Products.scss";
 
 const Products = () => {
-  const catId = parseInt(useParams().id);
+  const catId = parseInt(useParams().id)
   const [maxPrice, setMaxPrice] = useState(1000);
   const [sort, setSort] = useState(null);
   const [selectedSubCats, setSelectedSubCats] = useState([]);
 
   const { data, loading, error } = useFetch(
-    `/sub-categories?[filters][categories][id][$eq]=${catId}`
+    `/sub-categories?populate=*?[filters][categories][id][$eq]=${catId}`
   );
-
   const handleChange = (e) => {
     const value = e.target.value;
     const isChecked = e.target.checked;
@@ -66,7 +65,7 @@ const Products = () => {
               name="price"
               onChange={(e) => setSort("asc")}
             />
-            <label htmlFor="asc">Price (Lowest first)</label>
+            <label htmlFor="asc" >Price (Lowest first)</label>
           </div>
           <div className="inputItem">
             <input
@@ -81,12 +80,15 @@ const Products = () => {
         </div>
       </div>
       <div className="right">
-        <img className='catImg' src="https://img.freepik.com/free-photo/five-young-beautiful-girls-posing-against-abandoned-building_1153-8527.jpg?w=1060&t=st=1705041568~exp=1705042168~hmac=73812298b98b0ceb3d7de980a3072cb7697fbcd34366020bdcb79e9a8999c91d" alt="fashion" />
-        <List catId={catId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCats} />
+        <img
+          className="catImg"
+          src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          alt=""
+        />
+        <List catId={catId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCats}/>
       </div>
     </div>
-    
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

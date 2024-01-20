@@ -2,10 +2,10 @@ import './FeatureProducts.scss'
 import Card from '../Card/Card'
 import useFetch from '../../hooks/useFetch'
 
-const FeaturedProducts = ({type}) => {
+const TrendingProducts = ({type}) => {
 
     const { data, loading, error } = useFetch(
-        `/products?populate=*&[filters][type][$eq]=featured`
+        `/products?populate=*&[filters][type][$eq]=trending`
       );
       
   
@@ -29,4 +29,4 @@ const FeaturedProducts = ({type}) => {
   )
 }
 
-export default FeaturedProducts
+export default TrendingProducts
